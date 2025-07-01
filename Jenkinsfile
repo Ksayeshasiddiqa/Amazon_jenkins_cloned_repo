@@ -19,24 +19,18 @@ pipeline {
 
         stage('build') {
             steps {
-                 sh 'mvn clean install'
+                sh 'mvn clean install'
             }
         }
-
-        
     }
 
-  post{
+    post {
+        success {
+            echo 'Build success'
+        }
 
-  success{
-     echo 'Build success'
-  }
-    
-  failure{
-       echo 'Failure in the build'
-   }
-
-  }
-
-
+        failure {
+            echo 'Failure in the build'
+        }
+    }
 }
